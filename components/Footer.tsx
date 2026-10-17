@@ -86,8 +86,7 @@ export default function Footer() {
           {/* Column 1: Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <span className="font-bold text-xl text-primary tracking-wider">HERBO</span>
-              <span className="font-bold text-xl text-secondary tracking-wider">NATURAL</span>
+              <span className="font-bold text-xl text-primary tracking-wider">HERBBO</span>
             </div>
             <p className="text-sm text-accent/90 leading-relaxed max-w-xs">
               Your Trusted Source for Natural Health &amp; Wellness — DRAP-approved
