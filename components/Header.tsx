@@ -122,10 +122,9 @@ export default function Header({
           <Link
             href="/"
             className="flex items-center gap-2"
-            aria-label="Herbo Natural"
+            aria-label="Herbbo"
           >
-            <span className="font-bold text-xl text-primary tracking-wider">HERBO</span>
-            <span className="font-bold text-xl text-secondary tracking-wider">NATURAL</span>
+            <span className="font-bold text-xl text-primary tracking-wider">HERBBO</span>
           </Link>
 
           {/* Navigation links (desktop) */}
