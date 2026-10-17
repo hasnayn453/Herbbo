@@ -125,11 +125,15 @@ export default function Header({
             className="flex items-center gap-2"
             aria-label="Herbbo"
           >
+<<<<<<< HEAD
             <img
               src="/images/logo.svg"
               alt="Herbbo logo"
               className="h-10 w-auto object-contain"
             />
+=======
+            <span className="font-bold text-xl text-primary tracking-wider">Herbbo</span>
+>>>>>>> 9cebf97 (Update branding to Herbbo, remove DR references and announcement bar text)
           </Link>
 
           {/* Navigation links (desktop) */}
@@ -197,11 +201,15 @@ export default function Header({
             aria-modal="true"
           >
             <div className="flex items-center justify-between px-6 py-4 border-b border-solid border-primary/30">
+<<<<<<< HEAD
               <img
                 src="/images/logo.svg"
                 alt="Herbbo logo"
                 className="h-8 w-auto"
               />
+=======
+              <span className="font-bold text-xl text-primary tracking-wider">Herbbo</span>
+>>>>>>> 9cebf97 (Update branding to Herbbo, remove DR references and announcement bar text)
               <button
                 type="button"
                 className="text-white"

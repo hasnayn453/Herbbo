@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+<<<<<<< HEAD
   title: {
     template: "%s | Herbbo",
     default: "Herbbo - Natural Health & Wellness Supplements",
@@ -46,6 +47,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+=======
+  title: "Herbbo",
+  description: "Natural health and wellness products",
+>>>>>>> 9cebf97 (Update branding to Herbbo, remove DR references and announcement bar text)
 };
 
 export default function RootLayout({

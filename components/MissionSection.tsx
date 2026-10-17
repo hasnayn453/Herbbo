@@ -9,9 +9,15 @@ export default function MissionSection() {
             >
               Our Mission
             </h2>
+<<<<<<< HEAD
             <p className="text-lg text-[#0f172a]/90 leading-relaxed">
               At Herbbo, we believe true wellness begins with nature. All
               our products are herbal supplements, formulated with
+=======
+            <p className="text-lg text-foreground/90 leading-relaxed">
+              At Herbbo, we believe true wellness begins with nature. All
+              our products are DRAP-approved herbal supplements, formulated with
+>>>>>>> 9cebf97 (Update branding to Herbbo, remove DR references and announcement bar text)
               laboratory-certified ingredients and crafted to the highest
               standards of purity and safety.
             </p>
