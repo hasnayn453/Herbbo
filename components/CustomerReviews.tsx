@@ -83,7 +83,10 @@ export default function CustomerReviews() {
     setIndex((i) => (i + 1) % REVIEWS.length);
   }, []);
 
-  const visible = REVIEWS.slice(index, index + visibleCount);
+  const visible = Array.from(
+    { length: Math.min(visibleCount, REVIEWS.length) },
+    (_, i) => REVIEWS[(index + i) % REVIEWS.length]
+  );
 
   return (
     <section className="py-16 bg-accent">

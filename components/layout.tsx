@@ -32,7 +32,7 @@ export default function Layout({
         <Header onCartToggle={setCartOpen} />
         <main className="flex-1">{children}</main>
         <Footer />
-        <CartDrawer isOpen={cartOpen} />
+        <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
         {whatsappOpen && <WhatsAppButton onClose={() => setWhatsAppOpen(false)} />}
         {toastOpen && <LivePurchaseToast onClose={() => setToastOpen(false)} />}
       </div>
