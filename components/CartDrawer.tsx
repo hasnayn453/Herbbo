@@ -43,13 +43,28 @@ const MinusIcon = () => (
   </svg>
 );
 
-export default function CartDrawer({ isOpen }: { isOpen: boolean }) {
+export default function CartDrawer({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   const [mounted, setMounted] = useState(false);
   const { state, remove, increment, decrement, clear } = useCart();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen, onClose]);
 
   if (!mounted || !isOpen) return null;
 
@@ -71,7 +86,10 @@ export default function CartDrawer({ isOpen }: { isOpen: boolean }) {
       aria-label="Shopping cart"
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+      <div
+        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+        onClick={onClose}
+      />
 
       {/* Drawer panel */}
       <div
@@ -83,6 +101,7 @@ export default function CartDrawer({ isOpen }: { isOpen: boolean }) {
           <h2 className="font-bold text-lg text-foreground">Your Cart</h2>
           <button
             type="button"
+            onClick={onClose}
             className="text-accent hover:text-primary transition-colors"
             aria-label="Close cart"
           >

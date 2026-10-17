@@ -8,7 +8,7 @@ type BlogPost = {
   date: string;
 };
 
-const AUTHOR_BADGE = "DR. HERBO";
+const AUTHOR_BADGE = "Herbbo Team";
 
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (

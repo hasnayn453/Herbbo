@@ -1,5 +1,7 @@
 "use client";
 
+import { WHATSAPP_URL } from "@/lib/config";
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
@@ -25,7 +27,7 @@ const certifications = [
 const socialLinks = [
   { name: "Facebook", href: "https://facebook.com/herbonatural", icon: "f" },
   { name: "Instagram", href: "https://instagram.com/herbonatural", icon: "camera" },
-  { name: "WhatsApp", href: "https://wa.me/923000000000", icon: "phone" },
+  { name: "WhatsApp", href: WHATSAPP_URL, icon: "phone" },
   { name: "Twitter", href: "https://twitter.com/herbonatural", icon: "bird" },
 ];
 
@@ -69,6 +71,7 @@ export default function Footer() {
   const [year, setYear] = useState("");
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setYear(new Date().getFullYear().toString());
   }, []);
 
@@ -134,7 +137,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-accent/90">
               <li className="flex items-start gap-2">
                 <span className="flex-shrink-0 mt-[3px]">📍</span>
-                Lahore, Punjab, Pakistan
+                Multan, Punjab, Pakistan
               </li>
               <li className="flex items-center gap-2">
                 <span className="flex-shrink-0">📞</span>

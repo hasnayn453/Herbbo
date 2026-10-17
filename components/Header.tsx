@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "./CartContext";
+import { WHATSAPP_URL } from "@/lib/config";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -228,7 +229,7 @@ export default function Header({
                 <CartIcon /> Cart ({itemCount})
               </button>
               <a
-                href="https://wa.me/923000000000?text=Hi%20Herbo%20Natural,%20I%20would%20like%20to%20place%20an%20order"
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#25D366] text-white font-semibold hover:bg-[#1eb555] transition-colors"
