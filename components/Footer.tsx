@@ -139,11 +139,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <span className="flex-shrink-0">📞</span>
-                +92 300 0000000
+                +92 371 1327029
               </li>
               <li className="flex items-center gap-2">
                 <span className="flex-shrink-0">✉️</span>
-                support@herbonatural.pk
+                herbbo3241@gmail.com
               </li>
             </ul>
 
