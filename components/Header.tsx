@@ -125,7 +125,7 @@ export default function Header({
             className="flex items-center gap-2"
             aria-label="Herbbo"
           >
-            <span className="font-bold text-xl text-primary tracking-wider">HERBBO</span>
+            <span className="font-bold text-xl text-primary tracking-wider">Herbbo</span>
           </Link>
 
           {/* Navigation links (desktop) */}
@@ -193,8 +193,7 @@ export default function Header({
             aria-modal="true"
           >
             <div className="flex items-center justify-between px-6 py-4 border-b border-solid border-primary/30">
-              <span className="font-bold text-xl text-primary tracking-wider">HERBO</span>
-              <span className="font-bold text-xl text-secondary tracking-wider">NATURAL</span>
+              <span className="font-bold text-xl text-primary tracking-wider">Herbbo</span>
               <button
                 type="button"
                 className="text-white"

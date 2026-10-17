@@ -10,7 +10,7 @@ export default function MissionSection() {
               Our Mission
             </h2>
             <p className="text-lg text-foreground/90 leading-relaxed">
-              At Herbo Natural, we believe true wellness begins with nature. All
+              At Herbbo, we believe true wellness begins with nature. All
               our products are DRAP-approved herbal supplements, formulated with
               laboratory-certified ingredients and crafted to the highest
               standards of purity and safety.
