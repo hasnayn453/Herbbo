@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Herbo Natural",
+  title: "Herbbo",
   description: "Natural health and wellness products",
 };
 

@@ -195,7 +195,7 @@ export default function Footer() {
             ))}
           </div>
           <p className="text-xs text-accent/70">
-            &copy; {year} Herbo Natural. All rights reserved.
+            &copy; {year} Herbbo. All rights reserved.
           </p>
         </div>
       </div>
