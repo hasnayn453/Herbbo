@@ -98,7 +98,7 @@ export default function CustomerReviews() {
               from {TOTAL_REVIEWS} reviews
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] tracking-tight">
             Trusted By Our Customers
           </h2>
         </div>
@@ -117,12 +117,12 @@ export default function CustomerReviews() {
                     className="h-10 w-10 rounded-full object-cover"
                   />
                   <div>
-                    <p className="font-bold text-foreground">{review.name}</p>
-                    <p className="text-xs text-accent">{review.product}</p>
+                    <p className="font-bold text-[#0f172a]">{review.name}</p>
+                    <p className="text-xs text-secondary">{review.product}</p>
                   </div>
                 </div>
                 <StarRating rating={review.rating} className="mb-3" />
-                <p className="text-foreground/80 leading-relaxed">
+                <p className="text-[#0f172a]/80 leading-relaxed">
                   "{review.excerpt}"
                 </p>
               </article>

@@ -10,7 +10,6 @@ const TrustBadge = ({ label }: { label: string }) => (
 export default function TrustBanner() {
   const badges = [
     "100% Organic Supplements",
-    "Approved by DRAP Registered Facility",
     "Trusted by Thousands of Customers",
     "Cash On Delivery",
   ];

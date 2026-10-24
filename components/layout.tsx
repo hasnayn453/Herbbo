@@ -5,7 +5,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 import CartDrawer from "./CartDrawer";
 import WhatsAppButton from "./WhatsAppButton";
-import LivePurchaseToast from "./LivePurchaseToast";
 import { CartProvider } from "./CartContext";
 
 export default function Layout({
@@ -14,16 +13,12 @@ export default function Layout({
   setCartOpen,
   whatsappOpen,
   setWhatsAppOpen,
-  toastOpen,
-  setToastOpen,
 }: {
   children: React.ReactNode;
   cartOpen: boolean;
   setCartOpen: (open: boolean) => void;
   whatsappOpen: boolean;
   setWhatsAppOpen: (open: boolean) => void;
-  toastOpen: boolean;
-  setToastOpen: (open: boolean) => void;
 }) {
   return (
     <CartProvider>
@@ -34,7 +29,6 @@ export default function Layout({
         <Footer />
         <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
         {whatsappOpen && <WhatsAppButton onClose={() => setWhatsAppOpen(false)} />}
-        {toastOpen && <LivePurchaseToast onClose={() => setToastOpen(false)} />}
       </div>
     </CartProvider>
   );

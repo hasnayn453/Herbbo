@@ -6,10 +6,10 @@ export default function CategoryGrid() {
     <section className="py-16 bg-accent">
       <div className="px-4 mx-auto max-w-7xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] tracking-tight">
             Supplement Categories
           </h2>
-          <p className="mt-3 text-sm text-accent/80 font-medium uppercase tracking-wider">
+          <p className="mt-3 text-sm text-secondary font-medium uppercase tracking-wider">
             Shop by wellness goal
           </p>
         </div>

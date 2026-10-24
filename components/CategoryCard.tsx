@@ -7,10 +7,10 @@ type CategoryIconProps = {
 
 const CategoryIcon = ({ iconKey }: CategoryIconProps) => {
   const icons: Record<string, React.ReactNode> = {
-    rose: (
+    teal: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 text-rose-600"
+        className="h-12 w-12 text-teal-600"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -24,27 +24,10 @@ const CategoryIcon = ({ iconKey }: CategoryIconProps) => {
         />
       </svg>
     ),
-    indigo: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 text-indigo-600"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        aria-hidden="true"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-        />
-      </svg>
-    ),
     amber: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 text-amber-600"
+        className="h-12 w-12 text-amber-600"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -58,10 +41,10 @@ const CategoryIcon = ({ iconKey }: CategoryIconProps) => {
         />
       </svg>
     ),
-    emerald: (
+    orange: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 text-emerald-600"
+        className="h-12 w-12 text-orange-600"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -75,10 +58,10 @@ const CategoryIcon = ({ iconKey }: CategoryIconProps) => {
         />
       </svg>
     ),
-    violet: (
+    emerald: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 text-violet-600"
+        className="h-12 w-12 text-emerald-600"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -98,10 +81,10 @@ const CategoryIcon = ({ iconKey }: CategoryIconProps) => {
         />
       </svg>
     ),
-    teal: (
+    rose: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 text-teal-600"
+        className="h-12 w-12 text-rose-600"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -112,6 +95,23 @@ const CategoryIcon = ({ iconKey }: CategoryIconProps) => {
           strokeLinejoin="round"
           strokeWidth={2}
           d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+        />
+      </svg>
+    ),
+    indigo: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-12 w-12 text-indigo-600"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
         />
       </svg>
     ),
@@ -128,21 +128,41 @@ export default function CategoryCard({
   return (
     <Link
       href={category.href}
-      className="group relative block rounded-2xl p-6 border border-solid transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/50"
+      className="group relative block rounded-2xl overflow-hidden border border-solid border-accent bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary/50"
     >
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white to-white/80 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      <div className="relative z-10 flex flex-col items-center justify-center gap-3 text-center h-full">
-        <div
-          className={`rounded-2xl p-4 ${category.bg} shadow-sm transition-all duration-300 group-hover:scale-110`}
-        >
+      {/* Illustration background block */}
+      <div
+        className={`relative h-32 ${category.bg} overflow-hidden`}
+      >
+        <div className="absolute inset-0 bg-white/20" />
+        <div className="flex items-center justify-center h-full">
           <CategoryIcon iconKey={category.iconKey} />
         </div>
-        <h3 className={`${category.text} font-bold text-lg leading-tight group-hover:text-primary transition-colors`}>
+      </div>
+
+      {/* Content below illustration */}
+      <div className="p-5 flex flex-col items-center text-center h-full">
+        <h3 className={`${category.text} font-bold text-lg leading-tight mb-2 group-hover:text-primary transition-colors`}>
           {category.name}
         </h3>
-        <span className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-medium text-primary">
-          Shop →
-        </span>
+        <div className="flex items-center justify-center gap-1">
+          <span className="text-primary font-medium">Shop</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-3.5 w-3.5 text-primary"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
       </div>
     </Link>
   );

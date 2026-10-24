@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="jarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#D2B48C;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#DEB887;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D2B48C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="#F0F4F1"/>
+  <path d="M 50 120 Q 50 80 70 70 L 330 70 Q 350 80 350 120 Q 350 380 50 380 Q 50 120 50 120 Z" fill="url(#jarGrad)" />
+  <path d="M 60 80 Q 70 70 80 70 L 320 70 Q 330 70 340 80 Q 350 100 350 110 L 350 370 Q 350 380 340 380 L 60 380 Q 50 380 50 370 L 50 110 Q 50 100 60 80 Z" fill="none" stroke="#DEB887" stroke-width="3" />
+  <path d="M 70 60 Q 70 45 80 40 L 320 40 Q 330 40 330 45 L 330 60 Q 330 75 200 75 Q 70 75 70 60 Z" fill="#2E7D32" />
+  <path d="M 80 50 Q 80 35 90 30 L 310 30 Q 320 30 320 35 L 320 50 Q 320 65 200 65 Q 80 65 80 50 Z" fill="#1B5E20" />
+  <circle cx="200" cy="150" r="45" fill="#4CAF50" opacity="0.8" />
+  <path d="M 170 140 L 200 110 L 230 140" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="200" y="190" font-family="serif" font-size="24" font-weight="bold" fill="#000000" text-anchor="middle">Herbbo</text>
+  <text x="200" y="210" font-family="sans-serif" font-size="12" fill="#2E7D32" text-anchor="middle">Natural Health</text>
+  <path d="M 150 240 Q 200 260 250 240" fill="none" stroke="#4CAF50" stroke-width="4" stroke-linecap="round" />
+  <circle cx="180" cy="270" r="10" fill="#4CAF50" />
+  <circle cx="220" cy="270" r="10" fill="#4CAF50" />
+</svg>

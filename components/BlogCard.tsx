@@ -33,10 +33,10 @@ export default function BlogCard({ post }: { post: BlogPost }) {
         <time className="text-xs text-accent font-medium uppercase tracking-wider">
           {post.date}
         </time>
-        <h3 className="font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
+        <h3 className="font-bold text-[#0f172a] leading-tight group-hover:text-primary transition-colors">
           {post.title}
         </h3>
-        <p className="text-sm text-foreground/70 leading-relaxed line-clamp-2">
+        <p className="text-sm text-[#0f172a]/70 leading-relaxed line-clamp-2">
           {post.excerpt}
         </p>
       </div>

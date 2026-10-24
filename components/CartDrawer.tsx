@@ -98,7 +98,7 @@ export default function CartDrawer({
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-solid border-accent">
-          <h2 className="font-bold text-lg text-foreground">Your Cart</h2>
+          <h2 className="font-bold text-lg text-[#0f172a]">Your Cart</h2>
           <button
             type="button"
             onClick={onClose}
@@ -127,7 +127,7 @@ export default function CartDrawer({
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 110 4 2 2 0 010-4z"
               />
             </svg>
-            <p className="text-lg font-semibold text-foreground">Your cart is empty</p>
+            <p className="text-lg font-semibold text-[#0f172a]">Your cart is empty</p>
             <p className="mt-1 text-sm text-accent/70">
               Add some products to get started.
             </p>
@@ -155,7 +155,7 @@ export default function CartDrawer({
                   </div>
                   <div className="flex flex-col gap-1 min-w-0">
                     <div className="flex justify-between">
-                      <h3 className="font-semibold text-foreground line-clamp-1">
+                      <h3 className="font-semibold text-[#0f172a] line-clamp-1">
                         {item.name}
                       </h3>
                       <button
@@ -172,12 +172,12 @@ export default function CartDrawer({
                       <button
                         type="button"
                         onClick={() => decrement(item.id)}
-                        className="flex h-7 w-7 items-center justify-center rounded-md bg-accent text-foreground text-sm font-bold hover:bg-secondary transition-colors"
+                        className="flex h-7 w-7 items-center justify-center rounded-md bg-accent text-[#0f172a] text-sm font-bold hover:bg-secondary transition-colors"
                         aria-label={`Decrease ${item.name} quantity`}
                       >
                         <MinusIcon />
                       </button>
-                      <span className="font-medium text-foreground min-w-[20px] text-center">
+                      <span className="font-medium text-[#0f172a] min-w-[20px] text-center">
                         {item.qty}
                       </span>
                       <button
@@ -197,8 +197,8 @@ export default function CartDrawer({
             {/* Checkout summary */}
             <div className="border-t border-solid border-accent px-6 py-4">
               <div className="flex justify-between mb-2">
-                <span className="text-foreground/80">Subtotal ({itemCount} item{itemCount !== 1 ? "s" : ""})</span>
-                <span className="font-bold text-foreground">{formatPrice(subtotal)}</span>
+                <span className="text-[#0f172a]/80">Subtotal ({itemCount} item{itemCount !== 1 ? "s" : ""})</span>
+                <span className="font-bold text-[#0f172a]">{formatPrice(subtotal)}</span>
               </div>
               <div className="flex justify-between text-sm text-accent/70 mt-1">
                 <span>Free shipping on orders over Rs. 2,000</span>

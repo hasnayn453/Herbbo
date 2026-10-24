@@ -1,0 +1,105 @@
+import { writeFileSync, readFileSync, existsSync } from "fs";
+import path from "path";
+
+const DB_PATH = path.join(process.cwd(), "data/db.json");
+
+const seedData = {
+  products: [
+    {
+      id: "hungrez-weight-gain",
+      name: "Hungrez Weight Gain",
+      image: "/images/products/product-placeholder.svg",
+      price: 2450,
+      rating: 4.5,
+      reviews: 128,
+      status: "in-stock",
+      category: "weight-gain",
+    },
+    {
+      id: "ashwagandha-capsules",
+      name: "Ashwagandha Capsules",
+      image: "/images/products/product-placeholder.svg",
+      price: 1200,
+      rating: 4.7,
+      reviews: 204,
+      status: "sale",
+      category: "men-health",
+    },
+    {
+      id: "fertilx",
+      name: "Fertilex",
+      image: "/images/products/product-placeholder.svg",
+      price: 1850,
+      rating: 4.3,
+      reviews: 86,
+      status: "sold-out",
+      category: "women-health",
+    },
+    {
+      id: "maca-root",
+      name: "Maca Root",
+      image: "/images/products/product-placeholder.svg",
+      price: 1550,
+      rating: 4.6,
+      reviews: 157,
+      status: "in-stock",
+      category: "weight-loss",
+    },
+    {
+      id: "sperm-count-kit",
+      name: "Sperm Count Kit",
+      image: "/images/products/product-placeholder.svg",
+      price: 3200,
+      rating: 4.8,
+      reviews: 92,
+      status: "sale",
+      category: "men-health",
+    },
+    {
+      id: "royal-jelly",
+      name: "Royal Jelly",
+      image: "/images/products/product-placeholder.svg",
+      price: 1900,
+      rating: 4.4,
+      reviews: 113,
+      status: "in-stock",
+      category: "women-health",
+    },
+  ],
+  categories: [
+    { id: "women-health", name: "Women Health" },
+    { id: "men-health", name: "Men Health" },
+    { id: "weight-gain", name: "Weight Gain" },
+    { id: "weight-loss", name: "Weight Loss" },
+    { id: "beauty-products", name: "Beauty Products" },
+    { id: "digestive-health", name: "Digestive Health" },
+  ],
+  users: [
+    {
+      id: "admin-1",
+      email: "admin@herbbo.pk",
+      password: "$2a$10$hashed.demo.password", // placeholder — use bcrypt in production
+      role: "admin",
+    },
+    {
+      id: "user-1",
+      email: "user@herbbo.pk",
+      password: "$2a$10$hashed.demo.password",
+      role: "customer",
+    },
+  ],
+  orders: [],
+};
+
+function readDb() {
+  if (!existsSync(DB_PATH)) {
+    writeFileSync(DB_PATH, JSON.stringify(seedData, null, 2));
+  }
+  return JSON.parse(readFileSync(DB_PATH, "utf-8"));
+}
+
+function writeDb(data: unknown) {
+  writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+}
+
+export { readDb, writeDb, seedData };

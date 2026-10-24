@@ -12,8 +12,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "hungrez-weight-gain",
     name: "Hungrez Weight Gain",
-    image:
-      "https://images.unsplash.com/photo-1589943021336-f2e851463c3b?q=80&w=800&auto=format&fit=crop",
+    image: "/images/products/product-placeholder.svg",
     price: 2450,
     rating: 4.5,
     reviews: 128,
@@ -22,8 +21,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "ashwagandha-capsules",
     name: "Ashwagandha Capsules",
-    image:
-      "https://images.unsplash.com/photo-1615911767167-d70524141cbf?q=80&w=800&auto=format&fit=crop",
+    image: "/images/products/product-placeholder.svg",
     price: 1200,
     rating: 4.7,
     reviews: 204,
@@ -32,8 +30,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "fertilx",
     name: "Fertilex",
-    image:
-      "https://images.unsplash.com/photo-1559757175-5720dda97ac2?q=80&w=800&auto=format&fit=crop",
+    image: "/images/products/product-placeholder.svg",
     price: 1850,
     rating: 4.3,
     reviews: 86,
@@ -42,8 +39,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "maca-root",
     name: "Maca Root",
-    image:
-      "https://images.unsplash.com/photo-1586201375761-83865001e358?q=80&w=800&auto=format&fit=crop",
+    image: "/images/products/product-placeholder.svg",
     price: 1550,
     rating: 4.6,
     reviews: 157,
@@ -52,8 +48,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "sperm-count-kit",
     name: "Sperm Count Kit",
-    image:
-      "https://images.unsplash.com/photo-1584238653379-638717e44240?q=80&w=800&auto=format&fit=crop",
+    image: "/images/products/product-placeholder.svg",
     price: 3200,
     rating: 4.8,
     reviews: 92,
@@ -62,8 +57,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "royal-jelly",
     name: "Royal Jelly",
-    image:
-      "https://images.unsplash.com/photo-1574734279768-a9f8d501d3a0?q=80&w=800&auto=format&fit=crop",
+    image: "/images/products/product-placeholder.svg",
     price: 1900,
     rating: 4.4,
     reviews: 113,

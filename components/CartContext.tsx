@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useReducer, ReactNode } from "react";
+import { createContext, useContext, useReducer, useEffect, ReactNode } from "react";
 
 export type CartItem = {
   id: string;
@@ -21,7 +21,24 @@ type CartAction =
   | { type: "DECREMENT"; id: string }
   | { type: "CLEAR" };
 
-const initialState: CartState = { items: [] };
+const loadCart = (): CartState => {
+  if (typeof window === "undefined") return { items: [] };
+  try {
+    const raw = localStorage.getItem("herbbo_cart");
+    return raw ? JSON.parse(raw) : { items: [] };
+  } catch {
+    return { items: [] };
+  }
+};
+
+const saveCart = (state: CartState) => {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.setItem("herbbo_cart", JSON.stringify(state));
+  } catch {
+    // ignore quota errors
+  }
+};
 
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
@@ -69,7 +86,11 @@ const CartContext = createContext<{
 } | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(cartReducer, initialState);
+  const [state, dispatch] = useReducer(cartReducer, loadCart());
+
+  useEffect(() => {
+    saveCart(state);
+  }, [state]);
 
   const itemCount = state.items.reduce((sum, i) => sum + i.qty, 0);
   const subtotal = state.items.reduce(

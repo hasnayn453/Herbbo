@@ -10,7 +10,6 @@ export default function ClientLayout({
 }) {
   const [cartOpen, setCartOpen] = useState(false);
   const [whatsappOpen, setWhatsAppOpen] = useState(true);
-  const [toastOpen, setToastOpen] = useState(true);
 
   return (
     <Layout
@@ -19,8 +18,6 @@ export default function ClientLayout({
       setCartOpen={setCartOpen}
       whatsappOpen={whatsappOpen}
       setWhatsAppOpen={setWhatsAppOpen}
-      toastOpen={toastOpen}
-      setToastOpen={setToastOpen}
     />
   );
 }

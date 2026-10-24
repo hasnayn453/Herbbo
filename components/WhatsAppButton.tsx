@@ -8,14 +8,24 @@ export default function WhatsAppButton({
 }: {
   onClose?: () => void;
 }) {
+  const handleClick = async () => {
+    // Log WhatsApp interaction
+    try {
+      await fetch("/api/whatsapp/log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "whatsapp-button",
+          message: "Customer initiated WhatsApp chat",
+        }),
+      });
+    } catch {
+      // Silently fail - logging shouldn't block the user
+    }
+  };
+
   return (
-    <Link
-      href={WHATSAPP_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#1eb555] transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
-      aria-label="Chat with us on WhatsApp"
-    >
+    <div className="fixed bottom-6 right-6 z-50">
       {onClose && (
         <button
           type="button"
@@ -40,15 +50,20 @@ export default function WhatsAppButton({
           </svg>
         </button>
       )}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-7 w-7"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
+      <Link
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleClick}
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#1eb555] transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+        aria-label="Chat with us on WhatsApp"
       >
-        <path d="M20.51 3.32C17.35 2.05 13.29 1.87 12 1.87c-1.29 0-2.54.22-3.7.67L2.58 10.6c-.65.53-1.06 1.32-1.22 2.18-.17.93-.1 1.95.21 2.8.34.92 1.08 1.63 2.09 2.13l5.53 3.2c1.24.72 2.55 1.15 3.94 1.15 1.52 0 3.03-.5 4.38-1.56l3.94-2.66c.83-.56 1.48-1.42 1.72-2.43.23-1-.18-2.06-.91-2.83-.8-.86-1.78-1.39-2.88-2.12l-.24-.16c-1.05-.69-2.08-1.45-3.08-2.26l-.54-.54c-1.15-1.15-1.93-2.3-2.26-3.08l-.17-.25c-.76-.73-1.2-1.7-1.16-2.66.04-.94.44-1.87 1.24-2.6l3.2-5.53c.5-.92.81-1.94 1.21-2.99.44-1.15.65-2.34.65-3.57 0-1.3-.23-2.59-.68-3.79l-.24-.01zM12 2.27c5.37 0 9.74 4.37 9.74 9.74s-4.37 9.74-9.74 9.74c-5.14 0-9.38-4.07-9.68-9.26-.04-.16-.07-.31-.07-.47 0-.17.01-.34.05-.51.1-.57.48-1.05 1.02-1.42 1.01-.89 2.24-1.35 3.48-1.35 2.19 0 4.17 1.47 4.96 3.52.44 1.12.62 2.31.62 3.55 0 .47-.12.94-.29 1.37-.82 2.06-2.14 3.45-3.72 4.13-1.03.44-2.08.63-3.12.47-1.27-.21-2.39-1.1-2.99-2.22-.22-.42-.33-.87-.31-1.32.02-.43.16-.86.45-1.23l1.63-2.05c.28-.36.64-.66 1.04-.89 1.03-.61 2.25-.98 3.54-.98 1.29 0 2.49.39 3.48 1.19l1.17.94c1.04.84 1.6 1.99 1.6 3.22 0 .48-.14.95-.39 1.39-.48.84-1.25 1.4-2.15 1.75-.88.34-1.81.49-2.73.32-1.16-.21-2.14-1.1-2.66-2.15-.25-.52-.38-1.07-.38-1.65 0-.66.24-1.3.65-1.77.81-.93 1.94-1.48 3.14-1.48 1.18 0 2.28.47 3.12 1.34l.1.11c.36.37.65.79.86 1.25.45.94.62 1.96.45 3.01-.06.37-.2.73-.39 1.07-.38.68-1 1.12-1.75 1.33-1.55.44-3.21.59-4.82.31-.82-.14-1.62-.51-2.29-1.15-.26-.26-.48-.56-.64-.89-.29-.63-.45-1.31-.45-2.02 0-1.24.51-2.42 1.38-3.28.9-.89 2.04-1.44 3.28-1.44 1.23 0 2.37.55 3.22 1.44l.11.1c.85.89 1.34 2.08 1.34 3.35 0 .68-.16 1.35-.44 1.99-.56 1.3-1.59 2.2-2.85 2.42-.8.14-1.62.1-2.4-.15z" />
-      </svg>
-    </Link>
+        <img
+          src="/images/whatsapp.svg"
+          alt="WhatsApp"
+          className="h-7 w-7"
+        />
+      </Link>
+    </div>
   );
 }

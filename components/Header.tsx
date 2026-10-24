@@ -125,11 +125,15 @@ export default function Header({
             className="flex items-center gap-2"
             aria-label="Herbbo"
           >
-            <span className="font-bold text-xl text-primary tracking-wider">Herbbo</span>
+            <img
+              src="/images/logo.svg"
+              alt="Herbbo logo"
+              className="h-10 w-auto object-contain"
+            />
           </Link>
 
           {/* Navigation links (desktop) */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-foreground">
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-[#0f172a]">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -145,21 +149,21 @@ export default function Header({
           <div className="flex items-center gap-4 md:gap-6">
             <button
               type="button"
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-[#0f172a] hover:text-primary transition-colors"
               aria-label="Search"
             >
               <SearchIcon />
             </button>
             <button
               type="button"
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-[#0f172a] hover:text-primary transition-colors"
               aria-label="Account"
             >
               <AccountIcon />
             </button>
             <button
               type="button"
-              className="relative text-foreground hover:text-primary transition-colors"
+              className="relative text-[#0f172a] hover:text-primary transition-colors"
               aria-label={`Cart (${itemCount} items)`}
               onClick={() => onCartToggle?.(true)}
             >
@@ -175,7 +179,7 @@ export default function Header({
             {/* Mobile menu button */}
             <button
               type="button"
-              className="md:hidden text-foreground hover:text-primary transition-colors"
+              className="md:hidden text-[#0f172a] hover:text-primary transition-colors"
               onClick={() => setMenuOpen((prev) => !prev)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
@@ -193,7 +197,11 @@ export default function Header({
             aria-modal="true"
           >
             <div className="flex items-center justify-between px-6 py-4 border-b border-solid border-primary/30">
-              <span className="font-bold text-xl text-primary tracking-wider">Herbbo</span>
+              <img
+                src="/images/logo.svg"
+                alt="Herbbo logo"
+                className="h-8 w-auto"
+              />
               <button
                 type="button"
                 className="text-white"

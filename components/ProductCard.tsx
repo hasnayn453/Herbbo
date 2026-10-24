@@ -11,6 +11,7 @@ type Product = {
   rating: number;
   reviews: number;
   status: "in-stock" | "sold-out" | "sale";
+  category: string;
 };
 
 const StarRating = ({ rating }: { rating: number }) => {
@@ -86,18 +87,11 @@ export default function ProductCard({
   };
 
   return (
-    <div
-      className="group flex flex-col rounded-xl border border-solid border-accent bg-white shadow-sm transition-all hover:shadow-xl hover:border-primary/30"
+    <Link
+      href={`/product/${product.id}`}
+      className="group block rounded-xl overflow-hidden border border-solid border-accent bg-white shadow-sm transition-all hover:shadow-xl hover:border-primary/50"
     >
-      <div className="relative h-48 overflow-hidden rounded-t-lg bg-accent">
-        <Link href={`/product/${product.id}`} aria-label={`View ${product.name}`}>
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-        </Link>
+      <div className="relative h-48 overflow-hidden bg-accent">
         {isSoldOut && (
           <div className="absolute top-3 left-3 flex items-center gap-1 rounded-md bg-red-600 px-2 py-1 text-xs font-bold text-white shadow-md">
             <span className="flex h-3 w-3 rounded-full bg-white" />
@@ -135,10 +129,10 @@ export default function ProductCard({
         </button>
       </div>
 
-      <div className="p-4 flex flex-col gap-2">
+      <div className="p-5 flex flex-col gap-2">
         <StarRating rating={product.rating} />
-        <h3 className="font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
-          <Link href={`/product/${product.id}`}>{product.name}</Link>
+        <h3 className="font-bold text-[#0f172a] leading-tight group-hover:text-primary transition-colors">
+          {product.name}
         </h3>
         <p className="text-lg font-bold text-secondary">{priceText}</p>
         <button
@@ -169,6 +163,6 @@ export default function ProductCard({
           {isSoldOut ? "Sold out" : "Add to Cart"}
         </button>
       </div>
-    </div>
+    </Link>
   );
 }

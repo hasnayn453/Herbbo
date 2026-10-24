@@ -9,13 +9,13 @@ export default function MissionSection() {
             >
               Our Mission
             </h2>
-            <p className="text-lg text-foreground/90 leading-relaxed">
+            <p className="text-lg text-[#0f172a]/90 leading-relaxed">
               At Herbbo, we believe true wellness begins with nature. All
-              our products are DRAP-approved herbal supplements, formulated with
+              our products are herbal supplements, formulated with
               laboratory-certified ingredients and crafted to the highest
               standards of purity and safety.
             </p>
-            <p className="text-lg text-foreground/90 leading-relaxed">
+            <p className="text-lg text-[#0f172a]/90 leading-relaxed">
               Our brand philosophy is simple: deliver honest, effective, and
               accessible herbal wellness to every home. From men's and women's
               health to weight management and beauty, we are committed to
@@ -29,10 +29,10 @@ export default function MissionSection() {
               <span className="text-accent font-semibold uppercase tracking-wider text-sm">
                 DRAP Registered Facility
               </span>
-              <h3 className="mt-2 text-2xl font-bold text-foreground">
+              <h3 className="mt-2 text-2xl font-bold text-[#0f172a]">
                 Quality you can trust
               </h3>
-              <p className="mt-4 text-sm text-foreground/70 leading-relaxed">
+              <p className="mt-4 text-sm text-[#0f172a]/70 leading-relaxed">
                 Every batch is tested for purity, potency, and safety before it
                 reaches your doorstep.
               </p>
