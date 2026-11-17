@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -28,7 +29,13 @@ export default function LoginPage() {
         return;
       }
 
-      await router.push("/admin");
+      const data = await res.json();
+
+      if (data.user.role === "admin") {
+        router.push("/admin");
+      } else {
+        router.push("/");
+      }
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -40,8 +47,10 @@ export default function LoginPage() {
     <div className="flex flex-col min-h-screen bg-accent font-sans">
       <main className="flex-1 max-w-md mx-auto px-4 py-12">
         <div className="bg-white rounded-xl border border-solid border-accent p-8 shadow-sm">
-          <h1 className="text-2xl font-bold text-[#0f172a] mb-2 text-center">Admin Login</h1>
-          <p className="text-sm text-accent/70 text-center mb-6">Herbbo Admin Panel</p>
+          <div className="text-center mb-8">
+            <h1 className="text-2xl font-bold text-[#0f172a]">Welcome Back</h1>
+            <p className="text-sm text-accent/70">Sign in to your Herbbo account</p>
+          </div>
 
           {error && (
             <div className="mb-4 p-3 rounded-md bg-red-50 text-red-700 text-sm border border-solid border-red-100">
@@ -52,10 +61,11 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-[#0f172a] mb-1">
-                Email
+                Email Address
               </label>
               <input
                 type="email"
+                name="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -68,6 +78,7 @@ export default function LoginPage() {
               </label>
               <input
                 type="password"
+                name="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -84,7 +95,13 @@ export default function LoginPage() {
           </form>
 
           <p className="mt-6 text-xs text-accent/60 text-center">
-            Demo credentials: admin@herbbo.pk / any password
+            Don't have an account?{" "}
+            <Link
+              href="/register"
+              className="text-primary font-medium hover:underline"
+            >
+              Create one
+            </Link>
           </p>
         </div>
       </main>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 type Order = {
   id: string;
@@ -12,7 +13,9 @@ type Order = {
 };
 
 export default function AdminDashboard() {
+  const [tab, setTab] = useState<"orders" | "products">("orders");
   const [orders, setOrders] = useState<Order[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,6 +36,11 @@ export default function AdminDashboard() {
         setError("Failed to load orders");
         setLoading(false);
       });
+    fetch("/api/products").then((res) => res.json()).then((data: any[]) => {
+      setProducts(data);
+    }).catch(() => {
+      setLoading(false);
+    });
   }, []);
 
   if (loading) {
@@ -60,53 +68,130 @@ export default function AdminDashboard() {
 
   return (
     <div className="flex flex-col min-h-screen bg-accent font-sans">
-      <main className="flex-1 max-w-5xl mx-auto px-4 py-12">
+      <main className="flex-1 max-w-7xl mx-auto px-4 py-12">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl font-bold text-[#0f172a]">Admin Dashboard</h1>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => setTab("orders")}
+              className="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-primary text-white"
+            >
+              Orders
+            </button>
+            <button
+              type="button"
+              onClick={() => setTab("products")}
+              className="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-white text-[#0f172a] border border-solid border-accent hover:bg-accent/50"
+            >
+              Products
+            </button>
+          </div>
         </div>
 
-        <div className="bg-white rounded-xl border border-solid border-accent shadow-sm overflow-hidden">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-accent/50 border-b border-solid border-accent">
-                <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">ID</th>
-                <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Customer</th>
-                <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Email</th>
-                <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Total</th>
-                <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Status</th>
-                <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.length === 0 ? (
-                <tr>
-                  <td colSpan={6} className="px-4 py-6 text-center text-[#0f172a]/50">
-                    No orders yet.
-                  </td>
+        {tab === "orders" ? (
+          <div className="bg-white rounded-xl border border-solid border-accent shadow-sm overflow-hidden">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-accent/50 border-b border-solid border-accent">
+                  <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">ID</th>
+                  <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Customer</th>
+                  <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Email</th>
+                  <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Total</th>
+                  <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Status</th>
+                  <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Date</th>
                 </tr>
-              ) : (
-                orders.map((order) => (
-                  <tr key={order.id} className="border-b border-solid border-accent/50 last:border-0">
-                    <td className="px-4 py-3 text-sm text-[#0f172a]">{order.id}</td>
-                    <td className="px-4 py-3 text-sm text-[#0f172a]">{order.customerName}</td>
-                    <td className="px-4 py-3 text-sm text-accent/70">{order.customerEmail}</td>
-                    <td className="px-4 py-3 text-sm font-semibold text-[#0f172a]">
-                      Rs. {order.total.toLocaleString()}
+              </thead>
+              <tbody>
+                {orders.length === 0 ? (
+                  <tr>
+                    <td colSpan={6} className="px-4 py-6 text-center text-[#0f172a]/50">
+                      No orders yet.
                     </td>
-                    <td className="px-4 py-3 text-sm">
-                      <span
-                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-700"
-                      >
-                        {order.status}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 text-sm text-accent/60">{order.createdAt}</td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
+                ) : (
+                  orders.map((order) => (
+                    <tr key={order.id} className="border-b border-solid border-accent/50 last:border-0">
+                      <td className="px-4 py-3 text-sm text-[#0f172a]">{order.id}</td>
+                      <td className="px-4 py-3 text-sm text-[#0f172a]">{order.customerName}</td>
+                      <td className="px-4 py-3 text-sm text-accent/70">{order.customerEmail}</td>
+                      <td className="px-4 py-3 text-sm font-semibold text-[#0f172a]">
+                        Rs. {order.total.toLocaleString()}
+                      </td>
+                      <td className="px-4 py-3 text-sm">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-700">
+                          {order.status}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 text-sm text-accent/60">{order.createdAt}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="bg-white rounded-xl border border-solid border-accent shadow-sm overflow-hidden">
+            <div className="p-6 border-b border-solid border-accent">
+              <h2 className="text-lg font-bold text-[#0f172a] mb-4">Manage Products</h2>
+              <button
+                type="button"
+                className="flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-primary text-white text-sm font-medium hover:bg-secondary transition-colors"
+              >
+                Add Product
+              </button>
+            </div>
+
+            <div className="p-6 overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-accent/50 border-b border-solid border-accent">
+                    <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Name</th>
+                    <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Price</th>
+                    <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Category</th>
+                    <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Status</th>
+                    <th className="px-4 py-3 text-sm font-semibold text-[#0f172a]/70">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products.length === 0 ? (
+                    <tr>
+                      <td colSpan={6} className="px-4 py-6 text-center text-[#0f172a]/50">
+                        No products yet.
+                      </td>
+                    </tr>
+                  ) : (
+                    products.map((product) => (
+                      <tr key={product.id} className="border-b border-solid border-accent/50 last:border-0">
+                        <td className="px-4 py-3 text-sm text-[#0f172a]">{product.name}</td>
+                        <td className="px-4 py-3 text-sm text-[#0f172a]">
+                          Rs. {product.price.toLocaleString()}
+                        </td>
+                        <td className="px-4 py-3 text-sm text-accent/70 capitalize">
+                          {product.category}
+                        </td>
+                        <td className="px-4 py-3 text-sm">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-700">
+                            {product.status}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3 text-sm">
+                          <button
+                            type="button"
+                            onClick={() => {}}
+                            className="text-sm text-red-600 hover:text-red-800 font-medium"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );

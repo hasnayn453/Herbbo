@@ -91,13 +91,20 @@
     {
       "id": "admin-1",
       "email": "admin@herbbo.pk",
-      "password": "$2a$10$hashed.demo.password",
+      "password": "$2b$10$FSTBhu122gYqBVMLs1X2.e3qrqqbE/qEF5LAbvv6xgve5ssOFHsGe",
       "role": "admin"
     },
     {
       "id": "user-1",
       "email": "user@herbbo.pk",
-      "password": "$2a$10$hashed.demo.password",
+      "password": "$2b$10$XDY2USIX2ZcH4g6RfU/oXuDBOAl2jx5PoIsxttdlsCawzhMWiTrBy",
+      "role": "customer"
+    },
+    {
+      "id": "user-1794940155875",
+      "email": "asga@gmail.com",
+      "name": "Asga",
+      "password": "$2b$10$yuY2vcPtbUG2p4NUiQFeHO//bSlx/jPMMFAUsY.SFPnftnXjKwFYq",
       "role": "customer"
     }
   ],

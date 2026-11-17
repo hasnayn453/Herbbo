@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "./CartContext";
 import { WHATSAPP_URL } from "@/lib/config";
 
@@ -114,6 +114,63 @@ export default function Header({
 }) {
   const { itemCount } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [session, setSession] = useState<{ id: string; email: string; role: string } | null>(null);
+  const [sessionLoading, setSessionLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/auth/me")
+      .then(async (res) => {
+        if (!res.ok) {
+          setSessionLoading(false);
+          return;
+        }
+        return res.json();
+      })
+      .then((data: { user: { id: string; email: string; role: string } }) => {
+        setSession(data.user);
+        setSessionLoading(false);
+      })
+      .catch(() => {
+        setSessionLoading(false);
+      });
+  }, []);
+
+  const handleLogout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" });
+    setSession(null);
+    window.location.href = "/";
+  };
+
+  const authLinks = session ? (
+    <>
+      <button
+        type="button"
+        onClick={handleLogout}
+        className="text-[#0f172a] hover:text-primary transition-colors flex items-center gap-1 px-3 py-2 text-sm font-medium"
+      >
+        <span className="text-xs">Sign out</span>
+      </button>
+      <div className="hidden md:block text-right">
+        <div className="text-xs text-[#0f172a]/80">{session.email}</div>
+        <div className="text-xs font-medium text-primary capitalize">{session.role}</div>
+      </div>
+    </>
+  ) : (
+    <>
+      <Link
+        href="/login"
+        className="px-4 py-2 rounded-md bg-primary text-white text-sm font-medium hover:bg-secondary transition-colors"
+      >
+        Sign In
+      </Link>
+      <Link
+        href="/register"
+        className="px-4 py-2 rounded-md border border-solid border-accent bg-white text-[#0f172a] text-sm font-medium hover:bg-accent/50 transition-colors"
+      >
+        Sign Up
+      </Link>
+    </>
+  );
 
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-solid border-accent shadow-sm">
@@ -125,15 +182,11 @@ export default function Header({
             className="flex items-center gap-2"
             aria-label="Herbbo"
           >
-<<<<<<< HEAD
             <img
               src="/images/logo.svg"
               alt="Herbbo logo"
               className="h-10 w-auto object-contain"
             />
-=======
-            <span className="font-bold text-xl text-primary tracking-wider">Herbbo</span>
->>>>>>> 9cebf97 (Update branding to Herbbo, remove DR references and announcement bar text)
           </Link>
 
           {/* Navigation links (desktop) */}
@@ -180,6 +233,12 @@ export default function Header({
               </span>
             </button>
 
+            {sessionLoading ? (
+              <div className="px-4 py-2 text-sm text-accent/60">Loading...</div>
+            ) : (
+              authLinks
+            )}
+
             {/* Mobile menu button */}
             <button
               type="button"
@@ -201,15 +260,11 @@ export default function Header({
             aria-modal="true"
           >
             <div className="flex items-center justify-between px-6 py-4 border-b border-solid border-primary/30">
-<<<<<<< HEAD
               <img
                 src="/images/logo.svg"
                 alt="Herbbo logo"
                 className="h-8 w-auto"
               />
-=======
-              <span className="font-bold text-xl text-primary tracking-wider">Herbbo</span>
->>>>>>> 9cebf97 (Update branding to Herbbo, remove DR references and announcement bar text)
               <button
                 type="button"
                 className="text-white"
@@ -231,27 +286,42 @@ export default function Header({
                   <span aria-hidden="true">→</span>
                 </Link>
               ))}
+              {sessionLoading ? (
+                <div className="px-6 py-3 text-sm text-accent/60">Loading...</div>
+              ) : (
+                <>
+                  {session ? (
+                    <>
+                      <div className="px-6 py-3 text-sm text-[#0f172a]/80">{session.email}</div>
+                      <button
+                        type="button"
+                        onClick={handleLogout}
+                        className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-solid border-accent bg-white text-sm text-[#0f172a] hover:bg-accent/50 transition-colors"
+                      >
+                        Sign out
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setMenuOpen(false)}
+                        className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-secondary transition-colors"
+                      >
+                        Sign In
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setMenuOpen(false)}
+                        className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-solid border-accent bg-white text-sm text-[#0f172a] hover:bg-accent/50 transition-colors"
+                      >
+                        Sign Up
+                      </button>
+                    </>
+                  )}
+                </>
+              )}
             </nav>
-            <div className="p-6 flex flex-col gap-3 border-t border-solid border-primary/30">
-              <button
-                type="button"
-                className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-secondary transition-colors"
-                onClick={() => {
-                  setMenuOpen(false);
-                  onCartToggle?.(true);
-                }}
-              >
-                <CartIcon /> Cart ({itemCount})
-              </button>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#25D366] text-white font-semibold hover:bg-[#1eb555] transition-colors"
-              >
-                <span className="h-5 w-5" aria-hidden="true">💬</span> WhatsApp
-              </a>
-            </div>
           </div>
         )}
       </div>

@@ -58,4 +58,4 @@ export const REVIEWS: Review[] = [
 ];
 
 export const OVERALL_RATING = 4.7;
-export const TOTAL_REVIEWS = 162;
+export const TOTAL_REVIEWS = REVIEWS.length;

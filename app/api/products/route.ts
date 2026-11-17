@@ -26,7 +26,6 @@ export async function POST(req: Request) {
     );
   }
 
-  // Server-side price validation: price must be a positive number
   const parsedPrice = Number(price);
   if (!Number.isFinite(parsedPrice) || parsedPrice <= 0) {
     return NextResponse.json({ error: "Price must be a positive number" }, { status: 400 });
@@ -48,4 +47,33 @@ export async function POST(req: Request) {
   writeDb(db);
 
   return NextResponse.json(newProduct, { status: 201 });
+}
+
+export async function DELETE(req: Request) {
+  const auth = await requireRole(["admin"]);
+  if ("unauthorized" in auth) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  if ("forbidden" in auth) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+
+  if (!id) {
+    return NextResponse.json({ error: "Product ID is required" }, { status: 400 });
+  }
+
+  const db = readDb();
+  const productIndex = db.products.findIndex((p: any) => p.id === id);
+
+  if (productIndex === -1) {
+    return NextResponse.json({ error: "Product not found" }, { status: 404 });
+  }
+
+  db.products.splice(productIndex, 1);
+  writeDb(db);
+
+  return NextResponse.json({ message: "Product deleted successfully" });
 }

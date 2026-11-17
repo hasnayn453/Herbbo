@@ -9,7 +9,7 @@ export default function HeroBanner() {
       <div className="relative h-[500px] md:h-[600px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: 'url("/images/products/hero-product.svg")' }} />
         {/* Light overlay for text readability */}
-        <div className="absolute inset-0 bg-white/[0.6]" />
+        <div className="absolute inset-0 bg-white/[0.3]" />
         {/* Promotional overlay */}
         <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-8 lg:px-12">
           <div className="text-center max-w-2xl">

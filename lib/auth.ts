@@ -1,9 +1,15 @@
 import { cookies } from "next/headers";
 import { jwtVerify, SignJWT } from "jose";
 
-const SECRET = new TextEncoder().encode(
-  process.env.JWT_SECRET || "dev-secret-change-in-production"
-);
+if (!process.env.JWT_SECRET) {
+  throw new Error("JWT_SECRET environment variable is required");
+}
+
+if (process.env.JWT_SECRET.length < 32) {
+  throw new Error("JWT_SECRET must be at least 32 characters long");
+}
+
+const SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
 
 export type UserRole = "admin" | "customer";
 

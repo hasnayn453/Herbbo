@@ -14,18 +14,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-<<<<<<< HEAD
   title: {
     template: "%s | Herbbo",
     default: "Herbbo - Natural Health & Wellness Supplements",
   },
   description:
-    "Herbbo - Your trusted source for DRAP-approved herbal supplements, natural health products, and wellness solutions in Pakistan. Laboratory-certified quality you can trust.",
+    "Herbbo - Your trusted source for herbal supplements and wellness products in Pakistan.",
   keywords: [
     "herbal supplements",
     "natural health",
     "wellness products",
-    "DRAP approved",
     "Pakistan",
     "Herbbo",
   ],
@@ -33,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Herbbo - Natural Health & Wellness Supplements",
     description:
-      "Your trusted source for DRAP-approved herbal supplements and wellness products in Pakistan.",
+      "Your trusted source for herbal supplements and wellness products in Pakistan.",
     type: "website",
     locale: "en_PK",
   },
@@ -41,16 +39,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Herbbo - Natural Health & Wellness Supplements",
     description:
-      "Your trusted source for DRAP-approved herbal supplements and wellness products in Pakistan.",
+      "Your trusted source for herbal supplements and wellness products in Pakistan.",
   },
   robots: {
     index: true,
     follow: true,
   },
-=======
-  title: "Herbbo",
-  description: "Natural health and wellness products",
->>>>>>> 9cebf97 (Update branding to Herbbo, remove DR references and announcement bar text)
 };
 
 export default function RootLayout({
